@@ -1,0 +1,194 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Open Sans', sans-serif;
+}
+
+.contenedor{
+    width: 90%;
+    max-width: 1000px;
+    margin: 20px auto;
+}
+
+.contenedor article{
+    line-height: 28px;
+}
+
+.contenedor article h1{
+    font-size: 30px;
+    text-align: left;
+    padding: 50px 0;
+}
+
+.contenedor article p{
+    margin-bottom: 20px;
+}
+
+.contenedor article .btn-abrir-popup{
+    padding: 0 20px;
+    margin-bottom: 20px;
+    height: 40px;
+    line-height: 40px;
+    border: none;
+    color: #fff;
+    background: #5e7de3;
+    border-radius: 3px;
+    font-family: 'Monserrat', sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: .3s ease all;
+}
+
+.contenedor article .btn-abrir-popup:hover{
+    background: rgba(94, 125, 227, .9);
+}
+
+/* POPUP */
+.overlay{/* sombreado */
+    background: rgba(0, 0, 0, .3);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+    /* opacity: 0;
+    transition: .3s ease all; */
+}
+
+.overlay.active{
+    visibility: visible;
+    /* opacity: 1;
+    transition: .3s ease all; */
+}
+
+.popup{
+    background: #f8f8f8;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, .3);
+    border-radius: 3px;
+    font-family: 'Montserrat', sans-serif;
+    padding: 20px;
+    text-align: center;
+    width: 600px;
+    transition: .3s ease all;
+    transform: scale(0.7);/* indicamos unSCALE para dar efecto de crecimiento al darle una CLASS ACTIVE */
+    opacity: 0;
+}
+
+.popup .btn-cerrar-popup{
+    font-size: 1rem;
+    line-height: 1rem;
+    display: block;
+    text-align: right;
+    color: #bbb;
+    transition: .3s ease all;
+}
+
+.popup .btn-cerrar-popup:hover{
+    color: #000;
+}
+
+.popup h3{
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    opacity: 0;/* le damos opacity = CERO para luego agregarle opacity = 1 en el KEYFRAMES de la creación del EFECTO/ANIMACIÓN */
+}
+
+.popup h4{
+    font-size: 26px;
+    font-weight: 400;
+    margin-bottom: 40px;
+    opacity: 0;/* le damos opacity = CERO para luego agregarle opacity = 1 en el KEYFRAMES de la creación del EFECTO/ANIMACIÓN */
+}
+
+.popup form .contenedor-inputs{
+    opacity: 0;
+}
+
+.popup form .contenedor-inputs input{
+    width: 100%;
+    margin-bottom: 20px;
+    height: 52px;
+    line-height: 52px;
+    font-size: 1rem;
+    text-align: center;
+    border: 1px solid #bbb;
+}
+
+.popup form .btn-submit{
+    padding: 0 20px;
+    height: 40px;
+    line-height: 40px;
+    border: none;
+    color: #fff;
+    background: #5e7de3;
+    border-radius: 3px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: .3s ease all;
+}
+
+.popup form .btn-submit:hover{
+    background: rgba(94, 125, 227, .9);
+}
+
+/* ANIMACIONES */
+.popup.active{
+    opacity: 1;
+    transform: scale(1);/* indicamos un aumento en el SCALE para dar efecto de crecimiento al aparecer el popup */
+}
+
+.popup.active h3{
+    animation: entradaTitulo .8s ease .5s forwards;/* primer parametro nombre de la animación, segundo parametro duración de la animación de tipo EASE y ultimo parametro delay = .5S
+    gracias a FORWARDS la etiqueta se queda con el las ultimas propiedades asignadas en el KEYFRAMES */
+}
+
+.popup.active h4{
+    animation: entradaSubtitulo .8s ease .5s forwards;/* primer parametro nombre de la animación, segundo parametro duración de la animación de tipo EASE y ultimo parametro delay = .5S
+    gracias a FORWARDS la etiqueta se queda con el las ultimas propiedades asignadas en el KEYFRAMES */
+}
+
+.popup.active form .contenedor-inputs{
+    animation: entradaInputs .1s linear .3s forwards;/* primer parametro nombre de la animación, segundo parametro duración de la animación de tipo LINEAR y ultimo parametro delay = .1S
+    gracias a FORWARDS la etiqueta se queda con el las ultimas propiedades asignadas en el KEYFRAMES */
+}
+
+@keyframes entradaTitulo{/* nombre de la animacion CREAMOS LA ANIMACION */
+    from {/* desde o como comienza EFECTO */
+        transform: translateY(-25px);
+        opacity: 0;
+    }
+    to {/* hacia donde o como termina EFECTO */
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes entradaSubtitulo{/* nombre de la animacion CREAMOS LA ANIMACION */
+    from {/* desde o como comienza EFECTO */
+        transform: translateY(25px);
+        opacity: 0;
+    }
+    to {/* hacia donde o como termina EFECTO */
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes entradaInputs{/* nombre de la animacion CREAMOS LA ANIMACION */
+    from {/* desde o como comienza EFECTO */
+        opacity: 0;
+    }
+    to {/* hacia donde o como termina EFECTO */
+        opacity: 1;
+    }
+}
